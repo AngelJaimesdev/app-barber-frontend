@@ -18,15 +18,6 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build web app
-        run: npm run build
-
-      - name: Sync Capacitor Android
-        run: npx cap sync android
-
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -35,6 +26,15 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android
 
       - name: Build debug APK
         working-directory: android
